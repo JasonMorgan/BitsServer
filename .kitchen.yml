@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+transport:
+  name: winrm
+
+provisioner:
+  name: dsc
+  dsc_local_configuration_manager_version: wmf5
+
+verifier:
+  name: pester
+
+platforms:
+  - name: windows-2012r2
+    driver:
+      box: VzISD/Windows2012R2
+
+suites:
+  - name: default
+    run_list:
+    attributes:
