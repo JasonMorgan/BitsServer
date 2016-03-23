@@ -11,8 +11,8 @@ function features {
   switch ($action) {
     Test {
       Write-Verbose 'Checking for required features'
-      Get-WindowsFeature -Name $features | foreach {
-        if (! $_.installed) {
+      foreach ($f in (Get-WindowsFeature -Name $features)) {
+        if (! $f.installed) {
           return $false
         }
         return $true
@@ -33,11 +33,11 @@ function bitsuploads {
   $site = Get-Website -Name $Website
   switch ($action) {
     Test {
-      Write-Verbose "Checking if Bits Uploads are Enabled"
+      Write-Verbose "Checking if Bits Uploads are Enabled @ IIS://localhost/W3SVC/$($site.id)/root"
       return (New-Object System.DirectoryServices.DirectoryEntry("IIS://localhost/W3SVC/$($site.id)/root")).BITSUploadEnabled
     }
     Set {
-      Write-Verbose 'enabling Bits Uploads'
+      Write-Verbose "enabling Bits Uploads @ IIS://localhost/W3SVC/$($site.id)/root"
       (New-Object System.DirectoryServices.DirectoryEntry("IIS://localhost/W3SVC/$($site.id)/root")).EnableBitsUploads()
     }
   }
@@ -53,7 +53,7 @@ function website {
   )
   switch ($action) {
     Test {
-      Write-Verbose "Checking for website $Website"
+      Write-Verbose "Checking for website $Website @ port $port @path $path @protocol $protocol"
       if (Get-Website -Name $Website) {
         return $true
       }
@@ -130,7 +130,7 @@ function mimeTypes {
       return $false
     }
     Set {
-      $null = add-webconfigurationproperty //staticContent -name collection -value @{fileExtension='.otf'; mimeType='application/octet-stream'} 
+      $null = add-webconfigurationproperty //staticContent -name collection -value @{fileExtension='.*'; mimeType='application/octet-stream'} 
     }
   }
 }

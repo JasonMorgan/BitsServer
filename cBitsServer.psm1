@@ -1,16 +1,16 @@
-Import-Module ../tools.psm1
+Import-Module $PSScriptRoot\tools.psm1
 
 enum protocols {
   http
   https
 }
 
-[[DscResource()]
+[DscResource()]
 class cBitsServer {
   # Properties
   # Path for Bits Transfers directory
   [DscProperty(Key)]
-  [string] $path,
+  [string] $path
   
   # Port Number
   [DscProperty()]
@@ -40,14 +40,14 @@ class cBitsServer {
     if (! (permissions -action Test -path $this.path)) {
       permissions -action Set -path $this.path
     }
-    if (! (website -action Test -path $this.path -website $this.website -port $this.port -protocol $this.protocol)) {
-      website -action Set -path $this.path -website $this.website -port $this.port -protocol $this.protocol
+    if (! (website -action Test -path $this.path -website $this.webSiteName -port $this.port -protocol $this.protocol)) {
+      website -action Set -path $this.path -website $this.webSiteName -port $this.port -protocol $this.protocol
     }
     if (! (mimeTypes -action Test)) {
       mimeTypes -action Set
     }
-    if (! (bitsuploads -action Test -website $this.website)) {
-      bitsuploads -action Set -website $this.website
+    if (! (bitsuploads -action Test -website $this.webSiteName)) {
+      bitsuploads -action Set -website $this.webSiteName
     }
   }
   
@@ -62,14 +62,15 @@ class cBitsServer {
     if (! (permissions -action Test -path $this.path)) {
       return $false
     }
-    if (! (website -action Test -path $this.path -website $this.website -port $this.port -protocol $this.protocol)) {
+    if (! (website -action Test -path $this.path -website $this.webSiteName -port $this.port -protocol $this.protocol)) {
       return $false
     }
     if (! (mimeTypes -action Test)) {
       return $false
     }
-    if (! (bitsuploads -action Test -website $this.website)) {
+    if (! (bitsuploads -action Test -website $this.webSiteName)) {
       return $false
     }
+    return $true
   }
-}]
+}

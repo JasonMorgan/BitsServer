@@ -12,7 +12,7 @@
 RootModule = 'cBitsServer.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # ID used to uniquely identify this module
 GUID = 'd14aa71f-8950-470c-943a-59fdeedf1473'
@@ -98,7 +98,7 @@ PrivateData = @{
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/JasonMorgan/cBitsServer'
 
         # A URL to an icon representing this module.
         # IconUri = ''
