@@ -2,11 +2,11 @@ configuration default {
   param (
     $ComputerName = 'localhost'
   )
-  Import-DscResource -Module cBitsServer
+  Import-DscResource -Module BitsServer
   node $ComputerName {
-    cBitsServer 'bits' {
-      path = 'c:\bits'
-      webSiteName = 'bits'
+    BitsServer 'alt_bits' {
+      path = 'c:\package_mgr\bits'
+      webSiteName = 'alt_bits'
       port = 81 
       protocol = 'http'
     }

@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'cBitsServer.psm1'
+RootModule = 'BitsServer.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.1.2'
 
 # ID used to uniquely identify this module
 GUID = 'd14aa71f-8950-470c-943a-59fdeedf1473'
@@ -78,7 +78,7 @@ VariablesToExport = @()
 AliasesToExport = @()
 
 # DSC resources to export from this module
-DscResourcesToExport = @('cBitsServer')
+DscResourcesToExport = @('BitsServer')
 
 # List of all modules packaged with this module
 # ModuleList = @()
@@ -98,7 +98,7 @@ PrivateData = @{
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/JasonMorgan/cBitsServer'
+        ProjectUri = 'https://github.com/JasonMorgan/BitsServer'
 
         # A URL to an icon representing this module.
         # IconUri = ''

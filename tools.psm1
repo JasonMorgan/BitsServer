@@ -95,7 +95,7 @@ function permissions {
       $Acl = Get-Acl $path
       $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule("IUSR","Modify","Allow")
       $Acl.SetAccessRule($Ar)
-      Set-Acl "C:\Bits" $Acl
+      Set-Acl $path $Acl
     }
   }
 }
