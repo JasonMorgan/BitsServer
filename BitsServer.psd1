@@ -12,7 +12,7 @@
 RootModule = 'BitsServer.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.1.4'
 
 # ID used to uniquely identify this module
 GUID = 'd14aa71f-8950-470c-943a-59fdeedf1473'

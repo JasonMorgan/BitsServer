@@ -6,7 +6,7 @@ enum protocols {
 }
 
 [DscResource()]
-class cBitsServer {
+class BitsServer {
   # Properties
   # Path for Bits Transfers directory
   [DscProperty(Key)]
@@ -25,7 +25,7 @@ class cBitsServer {
   [protocols] $protocol = 'http'
   
   # Gets the resource's current state.
-  [cBitsServer] Get() {
+  [BitsServer] Get() {
     return $this
   }
   
